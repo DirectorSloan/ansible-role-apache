@@ -44,7 +44,6 @@
     name: '{{ apache_servicename }}'
     state: restarted
   when: >
-    httpd_configuration_redirect.changed or
     httpd_configuration_serveradmin.changed or
     httpd_configuration_servername.changed or
     httpd_configuration_ssl.changed
