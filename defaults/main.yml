@@ -1,5 +1,6 @@
 ---
 
-ansible_virtual_hostname: ''
+apache_virtual_hostname: ''
+apache_use_ssl: no
 
 ...
