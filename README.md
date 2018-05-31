@@ -61,6 +61,12 @@ apache_ssl_cert_file: '/etc/ssl/yourcert.pem'
 apache_ssl_cert_key_file: '/etc/ssl/yourkey.key'
 ```
 
+If you wish you can also provide a chain file extra:
+
+```yml
+apache_ssl_cert_key_file: '/etc/ssl/yourchainfile.pem'
+```
+
 ### Addon Variables
 
 Feel Free to define your own variables for different apache modules. Please use the config dir and avoid hacking the `httpd.conf` main config file.

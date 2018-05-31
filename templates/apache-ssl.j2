@@ -126,8 +126,11 @@ SSLCertificateKeyFile {{ apache_ssl_cert_key_file }}
 #   the referenced file can be the same as SSLCertificateFile
 #   when the CA certificates are directly appended to the server
 #   certificate for convinience.
+{% if apache_ssl_cert_chain_file is defined -%}
 SSLCertificateChainFile {{ apache_ssl_cert_chain_file }}
-
+{% else %}
+#SSLCertificateChainFile /etc/pki/tls/certs/chain.txt
+{%- endif %}
 #   Certificate Authority (CA):
 #   Set the CA certificate verification path where to find CA
 #   certificates for client authentication or alternatively one
