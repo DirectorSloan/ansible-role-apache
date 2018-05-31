@@ -41,7 +41,7 @@ apache_use_ssl: 'no'
 
 apache_user: 'apache'
 
-
+apache_vhost_desired: 'no'
 ```
 
 You can set this var to simple string values:
