@@ -30,7 +30,7 @@
     src: apache-ssl.j2
     dest: '{{ apache_config_dir }}/ssl.conf'
     owner: root
-    group: apache
+    group: '{{ apache_group }}'
     mode: 0640
   when: apache_use_ssl and (apache_virtual_hostname != '')
   register: httpd_configuration_ssl
@@ -39,7 +39,7 @@
   file:
     path: '{{ item }}'
     owner: root
-    group: apache
+    group: '{{ apache_group }}'
     mode: 0640
   with_items:
     - '{{ apache_ssl_cert_file }}'

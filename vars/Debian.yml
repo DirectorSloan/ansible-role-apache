@@ -7,5 +7,5 @@ apache_config_dir: '/etc/apache/conf.d'
 apache_servicename: 'apache'
 
 apache_user: 'www'
-
+apache_group: 'www-data'
 ...

@@ -7,5 +7,6 @@ apache_config_dir: '/etc/httpd/conf.d'
 apache_servicename: 'httpd'
 
 apache_user: 'apache'
+apache_group: 'apache'
 
 ...
