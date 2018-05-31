@@ -1,0 +1,57 @@
+---
+
+- name: changing apache main config Redirect
+  lineinfile:
+    line: "Redirect / https://{{ apache_virtual_host_name }}"
+    path: '{{ apache_config_file }}'
+  register: httpd_configuration_redirect
+  when: apache_use_ssl
+
+- name: changing apache main config ServerAdmin
+  lineinfile:
+    line: 'ServerAdmin {{ apache_server_admin }}'
+    regexp: 'ServerAdmin root@localhost'
+    backrefs: yes
+    path: '{{ apache_config_file }}'
+  register: httpd_configuration_serveradmin
+
+- name: changing apache main config ServerName
+  lineinfile:
+    line: 'ServerName {{ ansible_fqdn }}'
+    regexp: '#ServerName '
+    backrefs: yes
+    path: '{{ apache_config_file }}'
+  register: httpd_configuration_servername
+
+- name: deploying ssl config
+  template:
+    src: apache-ssl.j2
+    dest: '{{ apache_config_dir }}/ssl.conf'
+    owner: root
+    group: apache
+    mode: 0640
+  when: apache_use_ssl
+  register: httpd_configuration_ssl
+
+- name: ensuring cert files have correct permissions
+  file:
+    path: '{{ item }}'
+    owner: root
+    group: apache
+    mode: 0644
+  with_items:
+    - '{{ apache_ssl_cert_file }}'
+    - '{{ apache_ssl_cert_key_file }}'
+  when: apache_use_ssl
+
+- name: restart httpd
+  service:
+    name: '{{ apache_service_name }}'
+    state: restarted
+  when: >
+    httpd_configuration_redirect.changed or
+    httpd_configuration_serveradmin.changed or
+    httpd_configuration_servername.changed or
+    httpd_configuration_ssl.changed
+
+...

@@ -1,0 +1,11 @@
+---
+# this is just a guess - drafted!
+apache_config_file: '/etc/apache/conf/httpd.conf'
+
+apache_config_dir: '/etc/apache/conf.d'
+
+apache_service_name: 'apache'
+
+apache_user: 'www'
+
+...

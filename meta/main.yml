@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Ben Langenberg
+  description: 'Apache Web Server Role for installing and basic config'
+  license: MIT
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+
+  galaxy_tags:
+    - apache
+    - httpd
+    - webserver

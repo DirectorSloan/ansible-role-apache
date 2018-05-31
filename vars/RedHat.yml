@@ -1,0 +1,11 @@
+---
+
+apache_config_file: '/etc/httpd/conf/httpd.conf'
+
+apache_config_dir: '/etc/httpd/conf.d'
+
+apache_service_name: 'httpd'
+
+apache_user: 'apache'
+
+...

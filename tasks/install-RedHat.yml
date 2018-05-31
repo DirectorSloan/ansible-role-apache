@@ -1,0 +1,13 @@
+---
+
+- name: install apache basic
+  yum:
+    name: httpd
+    state: present
+
+- name: install ssl capability if needed
+  yum:
+    name: mod_ssl
+    state: present
+  when: apache_use_ssl
+...

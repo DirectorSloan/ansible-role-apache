@@ -1,0 +1,13 @@
+---
+# not tested! just a guess!
+- name: install apache basic
+  apt:
+    name: apache
+    state: present
+
+- name: install ssl capability if needed
+  apt:
+    name: mod_ssl
+    state: present
+  when: apache_use_ssl
+...
