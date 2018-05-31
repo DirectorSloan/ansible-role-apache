@@ -1,6 +1,7 @@
 ---
 
-apache_virtual_hostname: ''
+apache_vhost_desired: no
+apache_virtual_hostname: 'www.example.com'
 apache_use_ssl: no
 
 ...

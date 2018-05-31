@@ -44,7 +44,7 @@ apache_user: 'apache'
 
 ```
 
-This var is empty by default, but can be set to simple string values:
+You can set this var to simple string values:
 
 ```yml
 apache_virtual_hostname: 'hostname.domainname.edu'
