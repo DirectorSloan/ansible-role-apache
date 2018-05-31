@@ -4,7 +4,7 @@ apache_config_file: '/etc/apache/conf/httpd.conf'
 
 apache_config_dir: '/etc/apache/conf.d'
 
-apache_service_name: 'apache'
+apache_servicename: 'apache'
 
 apache_user: 'www'
 

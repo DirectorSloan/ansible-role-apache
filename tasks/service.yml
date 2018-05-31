@@ -2,7 +2,7 @@
 
 - name: enable httpd service and assure it is started
   service:
-    name: '{{ apache_service_name }}'
+    name: '{{ apache_servicename }}'
     enabled: yes
     state: started
   tags:

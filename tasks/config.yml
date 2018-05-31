@@ -2,10 +2,10 @@
 
 - name: changing apache main config Redirect
   lineinfile:
-    line: "Redirect / https://{{ apache_virtual_host_name }}"
+    line: "Redirect / https://{{ apache_virtual_hostname }}"
     path: '{{ apache_config_file }}'
   register: httpd_configuration_redirect
-  when: apache_use_ssl and (apache_virtual_host_name != '')
+  when: apache_use_ssl and (apache_virtual_hostname != '')
 
 - name: changing apache main config ServerAdmin
   lineinfile:
@@ -14,14 +14,16 @@
     backrefs: yes
     path: '{{ apache_config_file }}'
   register: httpd_configuration_serveradmin
+  when: apache_virtual_hostname != ''
 
 - name: changing apache main config ServerName
   lineinfile:
-    line: 'ServerName {{ ansible_fqdn }}'
+    line: 'ServerName {{ apache_virtual_hostname }}'
     regexp: '#ServerName '
     backrefs: yes
     path: '{{ apache_config_file }}'
   register: httpd_configuration_servername
+  when: apache_virtual_hostname != ''
 
 - name: deploying ssl config
   template:
@@ -30,7 +32,7 @@
     owner: root
     group: apache
     mode: 0640
-  when: apache_use_ssl and (apache_virtual_host_name != '')
+  when: apache_use_ssl and (apache_virtual_hostname != '')
   register: httpd_configuration_ssl
 
 - name: ensuring cert files have correct permissions
@@ -46,7 +48,7 @@
 
 - name: restart httpd
   service:
-    name: '{{ apache_service_name }}'
+    name: '{{ apache_servicename }}'
     state: restarted
   when: >
     httpd_configuration_redirect.changed or
