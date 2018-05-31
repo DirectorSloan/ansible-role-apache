@@ -1,13 +1,14 @@
 ---
 # change it to apt instead of yum to use it with Debian or else
 - name: install apache basic
-  yum:
+  apt:
     name: apache # the package may has a different name, too
     state: present
 
 - name: install ssl capability if needed
-  yum:
+  apt:
     name: mod_ssl
     state: present
   when: apache_use_ssl
+
 ...
