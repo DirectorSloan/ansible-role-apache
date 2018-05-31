@@ -1,12 +1,5 @@
 ---
 
-- name: changing apache main config Redirect
-  lineinfile:
-    line: "Redirect / https://{{ apache_virtual_hostname }}"
-    path: '{{ apache_config_file }}'
-  register: httpd_configuration_redirect
-  when: apache_use_ssl and (apache_virtual_hostname != '')
-
 - name: changing apache main config ServerAdmin
   lineinfile:
     line: 'ServerAdmin {{ apache_server_admin }}'
