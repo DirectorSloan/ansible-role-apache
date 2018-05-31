@@ -40,7 +40,7 @@
     path: '{{ item }}'
     owner: root
     group: apache
-    mode: 0644
+    mode: 0640
   with_items:
     - '{{ apache_ssl_cert_file }}'
     - '{{ apache_ssl_cert_key_file }}'
