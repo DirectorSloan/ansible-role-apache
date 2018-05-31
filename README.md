@@ -44,11 +44,12 @@ apache_user: 'apache'
 
 ```
 
-These are empty by default, but can be set to simple string values:
+This var is empty by default, but can be set to simple string values:
 
 ```yml
-apache_virtual_hostname:: 'hostname.domainname.edu'
+apache_virtual_hostname: 'hostname.domainname.edu'
 ```
+Be careful: It has to be set if you want to use ssl with `apache_use_ssl`
 
 ### SSL Variables
 
