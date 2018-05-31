@@ -5,7 +5,7 @@
     line: "Redirect / https://{{ apache_virtual_host_name }}"
     path: '{{ apache_config_file }}'
   register: httpd_configuration_redirect
-  when: apache_use_ssl
+  when: apache_use_ssl and (apache_virtual_host_name != '')
 
 - name: changing apache main config ServerAdmin
   lineinfile:
@@ -30,7 +30,7 @@
     owner: root
     group: apache
     mode: 0640
-  when: apache_use_ssl
+  when: apache_use_ssl and (apache_virtual_host_name != '')
   register: httpd_configuration_ssl
 
 - name: ensuring cert files have correct permissions
