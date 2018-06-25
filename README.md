@@ -1,4 +1,4 @@
-Ansible Role: Postfix
+Ansible Role: Apache
 =====================
 
 An Ansible role that installs [Apache Web Server][apache] and configures it. It is currently used and tested for RHEL / CentOS 6 but may also work for 7. This Role has also a skeleteon for Debian based distributions.
