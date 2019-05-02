@@ -28,18 +28,6 @@
   when: apache_use_ssl and (apache_virtual_hostname != '')
   register: httpd_configuration_ssl
 
-- name: ensuring cert files have correct permissions
-  file:
-    path: '{{ item }}'
-    owner: root
-    group: '{{ apache_group }}'
-    mode: 0640
-  with_items:
-    - '{{ apache_ssl_cert_file }}'
-    - '{{ apache_ssl_cert_key_file }}'
-    - '{{ apache_ssl_cert_chain_file }}'
-  when: apache_use_ssl
-
 - name: restart httpd
   service:
     name: '{{ apache_servicename }}'
